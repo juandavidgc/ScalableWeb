@@ -18,6 +18,9 @@ import static org.junit.Assert.assertNull;
 @ContextConfiguration(classes = {MemoryStoreManagerTests.Config.class})
 public class MemoryStoreManagerTests {
 
+    public static final String THE_RIGHT_JSON = "the_right_json";
+    public static final String THE_LEFT_JSON = "the_left_json";
+
     @Autowired
     private MemoryStoreManager memoryStoreManager;
 
@@ -33,27 +36,27 @@ public class MemoryStoreManagerTests {
 
     @Test
     public void storeRightPart() {
-        memoryStoreManager.storeRightPart("storeRightPart", "the_right_json");
+        memoryStoreManager.storeRightPart("storeRightPart", THE_RIGHT_JSON);
 
-        assertEquals("the_right_json", memoryStoreManager.retrievePartsById("storeRightPart").getRight());
+        assertEquals(THE_RIGHT_JSON, memoryStoreManager.retrievePartsById("storeRightPart").getRight());
         assertNull(memoryStoreManager.retrievePartsById("storeRightPart").getLeft());
     }
 
     @Test
     public void storeLeftPart() {
-        memoryStoreManager.storeLeftPart("storeLeftPart", "the_left_json");
+        memoryStoreManager.storeLeftPart("storeLeftPart", THE_LEFT_JSON);
 
-        assertEquals("the_left_json", memoryStoreManager.retrievePartsById("storeLeftPart").getLeft());
+        assertEquals(THE_LEFT_JSON, memoryStoreManager.retrievePartsById("storeLeftPart").getLeft());
         assertNull(memoryStoreManager.retrievePartsById("storeLeftPart").getRight());
     }
 
     @Test
     public void storeBothParts() {
-        memoryStoreManager.storeRightPart("storeBothParts", "the_right_json");
-        memoryStoreManager.storeLeftPart("storeBothParts", "the_left_json");
+        memoryStoreManager.storeRightPart("storeBothParts", THE_RIGHT_JSON);
+        memoryStoreManager.storeLeftPart("storeBothParts", THE_LEFT_JSON);
 
-        assertEquals("the_right_json", memoryStoreManager.retrievePartsById("storeBothParts").getRight());
-        assertEquals("the_left_json", memoryStoreManager.retrievePartsById("storeBothParts").getLeft());
+        assertEquals(THE_RIGHT_JSON, memoryStoreManager.retrievePartsById("storeBothParts").getRight());
+        assertEquals(THE_LEFT_JSON, memoryStoreManager.retrievePartsById("storeBothParts").getLeft());
     }
 
 }
