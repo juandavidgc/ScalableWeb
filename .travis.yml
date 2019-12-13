@@ -1,4 +1,6 @@
 language: java
 
 script:
-  - docker build -t juandavidgc/scalable-web
+  - docker build -t juandavidgc/scalable-web .
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+  - docker push juandavidgc/scalable-web
