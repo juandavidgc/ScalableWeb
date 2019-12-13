@@ -14,6 +14,9 @@ public class CalculatorResponse {
 
     private List<Difference> differenceList;
 
+    public CalculatorResponse() {
+    }
+
     public CalculatorResponse(CalculatorResponseStatus responseStatus){
         this.responseStatus = responseStatus;
     }
