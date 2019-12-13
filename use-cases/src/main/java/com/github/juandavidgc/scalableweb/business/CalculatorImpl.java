@@ -35,24 +35,24 @@ public class CalculatorImpl implements Calculator {
         }
         else if(sameSizeButDifferent(parts)){
             calculatorResponse = new CalculatorResponse(SAME_SIZE_BUT_DIFFERENT);
-            calculatorResponse.setDifferenceList(calculateOffsets(parts));
+            calculatorResponse.setDifferenceList(findDifferences(parts));
         }
         return calculatorResponse;
     }
 
-    private List<Difference> calculateOffsets(Parts parts) {
+    private List<Difference> findDifferences(Parts parts) {
         List<Difference> differenceList = new ArrayList<>();
         int position = -1;
         int length = 0;
         for(int i = 0; i < parts.getRight().length(); i++){
-            if(parts.getRight().charAt(i) != parts.getLeft().charAt(i)){
-                if(position == -1){
+            if(differentCharAtPosition(parts, i)){
+                if(positionNotAlreadySet(position)){
                     position = i;
                 }
                 length++;
             }
             else {
-                if(position != -1 && length != 0){
+                if(differenceAlreadyFound(position, length)){
                     differenceList.add(new Difference(position, length));
                     position = -1;
                     length = 0;
@@ -60,6 +60,18 @@ public class CalculatorImpl implements Calculator {
             }
         }
         return differenceList;
+    }
+
+    private boolean differenceAlreadyFound(int position, int length) {
+        return position != -1 && length != 0;
+    }
+
+    private boolean differentCharAtPosition(Parts parts, int i) {
+        return parts.getRight().charAt(i) != parts.getLeft().charAt(i);
+    }
+
+    private boolean positionNotAlreadySet(int position) {
+        return position == -1;
     }
 
     private boolean sameSizeButDifferent(Parts parts) {
