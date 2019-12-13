@@ -12,4 +12,8 @@ public class Difference {
 
     public int length;
 
+    public Difference(int position, int length) {
+        this.position = position;
+        this.length = length;
+    }
 }
