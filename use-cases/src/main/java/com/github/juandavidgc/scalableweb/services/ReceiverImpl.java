@@ -15,11 +15,11 @@ public class ReceiverImpl implements Receiver {
 
     @Override
     public void left(String id, String json) {
-//        storeManager.storeLeftPart(id, json);
+        storeManager.storeLeftPart(id, json);
     }
 
     @Override
     public void right(String id, String json) {
-//        storeManager.storeRightPart(id, json);
+        storeManager.storeRightPart(id, json);
     }
 }
