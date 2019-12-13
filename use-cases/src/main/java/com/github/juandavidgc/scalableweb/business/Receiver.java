@@ -1,4 +1,4 @@
-package com.github.juandavidgc.scalableweb.services;
+package com.github.juandavidgc.scalableweb.business;
 
 /**
  * Created by Jgutierrez on 13/12/2019.

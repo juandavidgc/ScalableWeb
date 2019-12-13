@@ -1,4 +1,4 @@
-package com.github.juandavidgc.scalableweb.services;
+package com.github.juandavidgc.scalableweb.business;
 
 import com.github.juandavidgc.scalableweb.entities.CalculatorResponse;
 import com.github.juandavidgc.scalableweb.exceptions.NotEnoughPartsException;

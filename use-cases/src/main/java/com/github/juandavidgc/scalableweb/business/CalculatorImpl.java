@@ -1,4 +1,4 @@
-package com.github.juandavidgc.scalableweb.services;
+package com.github.juandavidgc.scalableweb.business;
 
 import com.github.juandavidgc.scalableweb.entities.CalculatorResponse;
 import com.github.juandavidgc.scalableweb.entities.Difference;
@@ -6,19 +6,17 @@ import com.github.juandavidgc.scalableweb.entities.Parts;
 import com.github.juandavidgc.scalableweb.exceptions.NotEnoughPartsException;
 import com.github.juandavidgc.scalableweb.state.StoreManager;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.github.juandavidgc.scalableweb.entities.CalculatorResponseStatus.EQUAL;
-import static com.github.juandavidgc.scalableweb.entities.CalculatorResponseStatus.NOT_EQUAL;
-import static com.github.juandavidgc.scalableweb.entities.CalculatorResponseStatus.SAME_SIZE_BUT_DIFFERENT;
+import static com.github.juandavidgc.scalableweb.entities.CalculatorResponseStatus.*;
 
 /**
  * Created by Jgutierrez on 13/12/2019.
  */
-@Service
+@Component
 public class CalculatorImpl implements Calculator {
 
     @Autowired

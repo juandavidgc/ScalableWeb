@@ -1,13 +1,13 @@
-package com.github.juandavidgc.scalableweb.services;
+package com.github.juandavidgc.scalableweb.business;
 
 import com.github.juandavidgc.scalableweb.state.StoreManager;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Component;
 
 /**
  * Created by Jgutierrez on 13/12/2019.
  */
-@Service
+@Component
 public class ReceiverImpl implements Receiver {
 
     @Autowired
