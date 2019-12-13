@@ -1,1 +1,4 @@
 language: java
+
+script:
+  - docker build -t juandavidgc/scalable-web
