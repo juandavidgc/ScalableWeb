@@ -2,6 +2,14 @@
 
 [![Build Status](https://travis-ci.com/juandavidgc/ScalableWeb.svg?branch=master)](https://travis-ci.com/juandavidgc/ScalableWeb)
 
+## Table of Contents
+
+**[Architecture](#Architecture)**
+  * [Components](#Components)
+  * [Deployment](#Deployment)
+
+**[DevOps](#DevOps)**
+
 ## Architecture
 
 ### Components
