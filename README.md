@@ -4,9 +4,9 @@
 
 ## Table of Contents
 
-**[The API](#The API)**
-  * [Store strings](#Store strings)
-  * [Calculate differences](#Calculate differences)
+**[The API](#heading--1-1)**
+  * [Store strings](#Architecture)
+  * [Calculate differences](#Architecture)
 
 **[Architecture](#Architecture)**
   * [Components](#Components)
@@ -14,6 +14,7 @@
 
 **[DevOps](#DevOps)**
 
+<div id="heading--1-1"/>
 ## The API
 
 ### Store Strings
