@@ -27,7 +27,13 @@ The solution is composed of the following components:
 ### Deployment
 ![Deployment](docs/deployment.jpg)
 
+The solutions is delivered through a docker instance pushed to docker hub [juandavidgc/scalable-web](https://hub.docker.com/repository/docker/juandavidgc/scalable-web).
+This instance has all deployable units within.
+
+If you want to try this docker instance out, you can use this link:
+
 [![Play With Docker](https://github.com/play-with-docker/stacks/raw/cff22438cb4195ace27f9b15784bbb497047afa7/assets/images/button.png)](https://labs.play-with-docker.com/?stack=https://raw.githubusercontent.com/juandavidgc/ScalableWeb/master/stack.yml)
 
 ## DevOps
-![Build Pipeline](docs/build-pipeline.jpg)
+DevOps is managed using travis-ci. With this, maven stages are executed, the docker images is built and push to
+docker hub registry.
