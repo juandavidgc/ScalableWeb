@@ -15,6 +15,7 @@
 **[DevOps](#DevOps)**
 
 <div id="heading--1-1"/>
+
 ## The API
 
 ### Store Strings
