@@ -4,11 +4,69 @@
 
 ## Table of Contents
 
+**[The API](#The API)**
+  * [Store strings](#Store strings)
+  * [Calculate differences](#Calculate differences)
+
 **[Architecture](#Architecture)**
   * [Components](#Components)
   * [Deployment](#Deployment)
 
 **[DevOps](#DevOps)**
+
+## The API
+
+### Store Strings
+```
+<host>/v1/diff/<ID>/left & <host>/v1/diff/<ID>/right
+```
+Each of these endpoints receive a JSON structure with the base64 encoded string to be compared.
+
+```json
+{
+  "base64": "{encoded string}"
+}
+```
+
+### Calculate differences
+```
+<host>/v1/diff/<ID>
+```
+This endpoint returns the result of the comparisson between the previous received encoded strings.
+
+If the JSON structures are equals:
+```json
+{
+  "status": "EQUAL"
+}
+```
+
+If the JSON structures are of not of equal size:
+```json
+{
+  "status": "NOT_EQUAL"
+}
+```
+
+If the JSON structures are of the same size but are different:
+```json
+{
+  "status": "SAME_SIZE_BUT_DIFFERENT",
+  "differences": [
+    {
+      "position": 4,
+      "length": 2
+    },
+    {
+       "position": 23,
+       "length": 2
+    }
+  ]
+}
+```
+The position is where the difference start (starts in 0), and the length is the amount of characters that are different.
+
+**Note:** If this endpoint is invoked without previously received enough parts of enconded strings, and *HTTP 417* (Expectation failed) is responded.
 
 ## Architecture
 
