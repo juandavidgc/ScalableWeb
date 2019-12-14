@@ -58,6 +58,16 @@ public class CalculatorImplTests {
         calculator.calculate("the_id");
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void nullId() throws NotEnoughPartsException {
+        calculator.calculate(null);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void emptyId() throws NotEnoughPartsException {
+        calculator.calculate("");
+    }
+
     @Test
     public void equalParts() throws NotEnoughPartsException {
         Parts parts = new Parts();

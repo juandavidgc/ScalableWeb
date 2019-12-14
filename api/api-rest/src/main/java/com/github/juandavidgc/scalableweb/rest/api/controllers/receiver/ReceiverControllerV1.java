@@ -33,7 +33,7 @@ public class ReceiverControllerV1 {
                                       @PathVariable("ID") String id){
         ResponseEntity responseEntity = new ResponseEntity(OK);
         try {
-            receiver.left(id, new String(Base64.decodeBase64(partRequest.getBase64().getBytes())));
+            receiver.left(id, partRequest.getBase64());
         } catch (NoJsonException e) {
             responseEntity = new ResponseEntity(NOT_ACCEPTABLE);
         }
@@ -45,7 +45,7 @@ public class ReceiverControllerV1 {
                                        @PathVariable("ID") String id){
         ResponseEntity responseEntity = new ResponseEntity(OK);
         try {
-            receiver.right(id, new String(Base64.decodeBase64(partRequest.getBase64().getBytes())));
+            receiver.right(id, partRequest.getBase64());
         } catch (NoJsonException e) {
             responseEntity = new ResponseEntity(NOT_ACCEPTABLE);
         }

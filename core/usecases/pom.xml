@@ -31,6 +31,11 @@
             <artifactId>jackson-databind</artifactId>
             <version>RELEASE</version>
         </dependency>
+        <dependency>
+            <groupId>org.apache.tomcat.embed</groupId>
+            <artifactId>tomcat-embed-core</artifactId>
+            <version>RELEASE</version>
+        </dependency>
     </dependencies>
 
 </project>

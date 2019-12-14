@@ -2,8 +2,10 @@ package com.github.juandavidgc.scalableweb.usecases.impl.receiver;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.github.juandavidgc.scalableweb.entities.exceptions.NoJsonException;
+import com.github.juandavidgc.scalableweb.entities.exceptions.NoValidBase64EncodingException;
 import com.github.juandavidgc.scalableweb.entities.usecases.receiver.Receiver;
 import com.github.juandavidgc.scalableweb.entities.state.StoreManager;
+import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -19,19 +21,39 @@ public class ReceiverImpl implements Receiver {
     private StoreManager storeManager;
 
     @Override
-    public void left(String id, String json) throws NoJsonException {
+    public void left(String id, String base64json) throws NoValidBase64EncodingException, NoJsonException {
+        if(isEmpty(id) || isEmpty(base64json)){
+            throw new IllegalArgumentException();
+        }
+        String json = getStringFromBase64(base64json);
         if(noJson(json)){
             throw new NoJsonException();
         }
         storeManager.storeLeftPart(id, json);
     }
 
+    private boolean isEmpty(String string) {
+        return string == null || string.isEmpty();
+    }
+
     @Override
-    public void right(String id, String json) throws NoJsonException {
+    public void right(String id, String base64json) throws NoValidBase64EncodingException, NoJsonException {
+        if(isEmpty(id) || isEmpty(base64json)){
+            throw new IllegalArgumentException();
+        }
+        String json = getStringFromBase64(base64json);
         if(noJson(json)){
             throw new NoJsonException();
         }
         storeManager.storeRightPart(id, json);
+    }
+
+    private String getStringFromBase64(String base64json) throws NoValidBase64EncodingException {
+        try {
+            return new String(Base64.decodeBase64(base64json.getBytes()));
+        } catch (IllegalArgumentException e){
+            throw new NoValidBase64EncodingException();
+        }
     }
 
     private boolean noJson(String json) {

@@ -24,6 +24,9 @@ public class CalculatorImpl implements Calculator {
 
     @Override
     public CalculatorResponse calculate(String id) throws NotEnoughPartsException {
+        if(isEmpty(id)){
+            throw new IllegalArgumentException();
+        }
         Parts parts = storeManager.retrievePartsById(id);
         if(noParts(parts) || noEnoughParts(parts)){
             throw new NotEnoughPartsException();
@@ -38,6 +41,10 @@ public class CalculatorImpl implements Calculator {
             calculatorResponse.setDifferenceList(findDifferences(parts));
         }
         return calculatorResponse;
+    }
+
+    private boolean isEmpty(String string) {
+        return string == null || string.isEmpty();
     }
 
     private List<Difference> findDifferences(Parts parts) {
