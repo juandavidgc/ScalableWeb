@@ -4,9 +4,9 @@
 
 ## Table of Contents
 
-**[The API](#heading--1-1)**
-  * [Store strings](#Architecture)
-  * [Calculate differences](#Architecture)
+**[The API](#heading--1)**
+  * [Store strings](#heading--1-1)
+  * [Calculate differences](#heading--1-2)
 
 **[Architecture](#Architecture)**
   * [Components](#Components)
@@ -14,9 +14,11 @@
 
 **[DevOps](#DevOps)**
 
-<div id="heading--1-1"/>
+<div id="heading--1"/>
 
 ## The API
+
+<div id="heading--1-1"/>
 
 ### Store Strings
 ```
@@ -29,6 +31,8 @@ Each of these endpoints receive a JSON structure with the base64 encoded string 
   "base64": "{encoded string}"
 }
 ```
+
+<div id="heading--1-2"/>
 
 ### Calculate differences
 ```
