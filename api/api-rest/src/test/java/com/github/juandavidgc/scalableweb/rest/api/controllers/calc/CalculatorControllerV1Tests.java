@@ -6,7 +6,6 @@ import com.github.juandavidgc.scalableweb.entities.domain.Difference;
 import com.github.juandavidgc.scalableweb.entities.exceptions.NotEnoughPartsException;
 import com.github.juandavidgc.scalableweb.entities.usecases.calc.Calculator;
 import com.github.juandavidgc.scalableweb.rest.api.messages.CalculatorResponseMessageV1;
-import com.github.juandavidgc.scalableweb.rest.api.messages.PartRequestMessageV1;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;
@@ -19,11 +18,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 /**
  * Created by Jgutierrez on 14/12/2019.
