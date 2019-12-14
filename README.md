@@ -32,6 +32,12 @@ Each of these endpoints receive a JSON structure with the base64 encoded string 
 }
 ```
 
+#### Responses
+| HTTP Code             | Explanation             |
+| -------------         |:-----------------------------------------------:|
+| 400 (OK)              | The String was accepted |
+| 406 (Not Acceptable)  | Empty String, Invalid JSON or Bad encoding      |
+
 <div id="heading--1-2"/>
 
 ### Calculate differences
@@ -72,7 +78,13 @@ If the JSON structures are of the same size but are different:
 ```
 The position is where the difference start (starts in 0), and the length is the amount of characters that are different.
 
-**Note:** If this endpoint is invoked without previously received enough parts of enconded strings, and *HTTP 417* (Expectation failed) is responded.
+#### Responses
+| HTTP Code                 | Explanation             |
+| -------------             |:-----------------------------------------------:|
+| 400 (OK)                  | Success calculation |
+| 417 (Expectation failed)  | Not enough parts (right, left or both)      |
+| 406 (Not acceptable)      | Empty ID      |
+
 
 ## Architecture
 
