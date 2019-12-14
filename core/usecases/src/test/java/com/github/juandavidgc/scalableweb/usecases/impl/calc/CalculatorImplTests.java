@@ -1,4 +1,4 @@
-package com.github.juandavidgc.scalableweb.usecases.impl;
+package com.github.juandavidgc.scalableweb.usecases.impl.calc;
 
 import com.github.juandavidgc.scalableweb.entities.domain.CalculatorResponse;
 import com.github.juandavidgc.scalableweb.entities.domain.Parts;

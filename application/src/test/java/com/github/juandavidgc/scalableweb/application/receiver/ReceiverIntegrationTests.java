@@ -1,4 +1,4 @@
-package com.github.juandavidgc.scalableweb.application;
+package com.github.juandavidgc.scalableweb.application.receiver;
 
 import com.github.juandavidgc.scalableweb.rest.api.messages.PartRequestMessageV1;
 import org.junit.Test;
@@ -17,6 +17,7 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.http.HttpMethod.PUT;
 import static org.springframework.http.HttpStatus.BAD_REQUEST;
+import static org.springframework.http.HttpStatus.NOT_ACCEPTABLE;
 import static org.springframework.http.HttpStatus.OK;
 import static org.springframework.http.MediaType.APPLICATION_JSON;
 
@@ -61,6 +62,20 @@ public class ReceiverIntegrationTests {
     }
 
     @Test
+    public void receiveLeftBadJson(){
+        PartRequestMessageV1 partRequestV1 = new PartRequestMessageV1();
+        String json = "{\"one\":1,\"\"two\":2}";
+        partRequestV1.setBase64(new String(Base64.encodeBase64(json.getBytes())));
+        HttpEntity<PartRequestMessageV1> entity = createEntity(partRequestV1);
+
+        ResponseEntity<String> response = restTemplate.exchange(createURLWithPort("/v1/diff/1/left"),
+                PUT, entity, String.class);
+
+        assertThat(response.getStatusCode()).isEqualTo(NOT_ACCEPTABLE);
+        assertThat(response.getBody()).isNull();
+    }
+
+    @Test
     public void receiveRight(){
         PartRequestMessageV1 partRequestV1 = new PartRequestMessageV1();
         String json = "{\"one\":1,\"two\":2}";
@@ -71,6 +86,20 @@ public class ReceiverIntegrationTests {
                 PUT, entity, String.class);
 
         assertThat(response.getStatusCode()).isEqualTo(OK);
+        assertThat(response.getBody()).isNull();
+    }
+
+    @Test
+    public void receiveRightBadJson(){
+        PartRequestMessageV1 partRequestV1 = new PartRequestMessageV1();
+        String json = "{\"one\":1,\"two\":juancho}";
+        partRequestV1.setBase64(new String(Base64.encodeBase64(json.getBytes())));
+        HttpEntity<PartRequestMessageV1> entity = createEntity(partRequestV1);
+
+        ResponseEntity<String> response = restTemplate.exchange(createURLWithPort("/v1/diff/1/right"),
+                PUT, entity, String.class);
+
+        assertThat(response.getStatusCode()).isEqualTo(NOT_ACCEPTABLE);
         assertThat(response.getBody()).isNull();
     }
 

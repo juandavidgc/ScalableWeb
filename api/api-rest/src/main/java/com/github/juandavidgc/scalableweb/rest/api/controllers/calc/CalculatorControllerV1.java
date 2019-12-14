@@ -1,9 +1,9 @@
-package com.github.juandavidgc.scalableweb.application;
+package com.github.juandavidgc.scalableweb.rest.api.controllers.calc;
 
 import com.github.juandavidgc.scalableweb.rest.api.mappers.Mapper;
 import com.github.juandavidgc.scalableweb.rest.api.messages.CalculatorResponseMessageV1;
 import com.github.juandavidgc.scalableweb.entities.exceptions.NotEnoughPartsException;
-import com.github.juandavidgc.scalableweb.entities.usecases.Calculator;
+import com.github.juandavidgc.scalableweb.entities.usecases.calc.Calculator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;

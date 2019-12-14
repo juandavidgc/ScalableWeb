@@ -1,4 +1,4 @@
-package com.github.juandavidgc.scalableweb.application;
+package com.github.juandavidgc.scalableweb.application.calc;
 
 import com.github.juandavidgc.scalableweb.rest.api.messages.CalculatorResponseMessageV1;
 import com.github.juandavidgc.scalableweb.rest.api.messages.PartRequestMessageV1;

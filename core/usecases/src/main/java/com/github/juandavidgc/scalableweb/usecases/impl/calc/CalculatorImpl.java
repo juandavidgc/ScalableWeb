@@ -1,4 +1,4 @@
-package com.github.juandavidgc.scalableweb.usecases.impl;
+package com.github.juandavidgc.scalableweb.usecases.impl.calc;
 
 import com.github.juandavidgc.scalableweb.entities.domain.CalculatorResponse;
 import com.github.juandavidgc.scalableweb.entities.domain.Difference;
@@ -6,7 +6,7 @@ import com.github.juandavidgc.scalableweb.entities.domain.Parts;
 import com.github.juandavidgc.scalableweb.entities.domain.CalculatorResponseStatus;
 import com.github.juandavidgc.scalableweb.entities.exceptions.NotEnoughPartsException;
 import com.github.juandavidgc.scalableweb.entities.state.StoreManager;
-import com.github.juandavidgc.scalableweb.entities.usecases.Calculator;
+import com.github.juandavidgc.scalableweb.entities.usecases.calc.Calculator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
