@@ -17,9 +17,10 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>use-cases</module>
-        <module>external</module>
-        <module>delivery</module>
+        <module>core</module>
+        <module>datastore</module>
+        <module>api</module>
+        <module>application</module>
     </modules>
 
     <properties>
