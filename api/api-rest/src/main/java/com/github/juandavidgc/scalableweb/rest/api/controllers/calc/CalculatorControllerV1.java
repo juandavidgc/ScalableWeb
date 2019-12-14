@@ -27,7 +27,7 @@ public class CalculatorControllerV1 {
     private Calculator calculator;
 
     @RequestMapping(value = "/{ID}", method = GET)
-    public ResponseEntity<CalculatorResponseMessageV1> receiveLeft(@PathVariable("ID") String id){
+    public ResponseEntity<CalculatorResponseMessageV1> calculate(@PathVariable("ID") String id){
         ResponseEntity responseEntity;
         try {
             responseEntity = new ResponseEntity(Mapper.map(calculator.calculate(id)), OK);
