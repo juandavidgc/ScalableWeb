@@ -1,6 +1,7 @@
 package com.github.juandavidgc.scalableweb.rest.api.controllers.receiver;
 
 import com.github.juandavidgc.scalableweb.entities.exceptions.NoJsonException;
+import com.github.juandavidgc.scalableweb.entities.exceptions.NoValidBase64EncodingException;
 import com.github.juandavidgc.scalableweb.rest.api.messages.PartRequestMessageV1;
 import com.github.juandavidgc.scalableweb.entities.usecases.receiver.Receiver;
 import org.apache.tomcat.util.codec.binary.Base64;
@@ -34,7 +35,7 @@ public class ReceiverControllerV1 {
         ResponseEntity responseEntity = new ResponseEntity(OK);
         try {
             receiver.left(id, partRequest.getBase64());
-        } catch (NoJsonException e) {
+        } catch (NoJsonException | NoValidBase64EncodingException | IllegalArgumentException e) {
             responseEntity = new ResponseEntity(NOT_ACCEPTABLE);
         }
         return responseEntity;
@@ -46,7 +47,7 @@ public class ReceiverControllerV1 {
         ResponseEntity responseEntity = new ResponseEntity(OK);
         try {
             receiver.right(id, partRequest.getBase64());
-        } catch (NoJsonException e) {
+        } catch (NoJsonException | NoValidBase64EncodingException | IllegalArgumentException e) {
             responseEntity = new ResponseEntity(NOT_ACCEPTABLE);
         }
         return responseEntity;

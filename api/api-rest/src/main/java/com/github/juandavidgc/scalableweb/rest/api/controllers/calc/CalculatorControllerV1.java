@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import static org.springframework.http.HttpStatus.EXPECTATION_FAILED;
+import static org.springframework.http.HttpStatus.NOT_ACCEPTABLE;
 import static org.springframework.http.HttpStatus.OK;
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
@@ -32,6 +33,8 @@ public class CalculatorControllerV1 {
             responseEntity = new ResponseEntity(Mapper.map(calculator.calculate(id)), OK);
         } catch (NotEnoughPartsException e) {
             responseEntity = new ResponseEntity(EXPECTATION_FAILED);
+        } catch (IllegalArgumentException e) {
+            responseEntity = new ResponseEntity(NOT_ACCEPTABLE);
         }
         return responseEntity;
     }

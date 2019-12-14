@@ -1,6 +1,7 @@
 package com.github.juandavidgc.scalableweb.rest.api.controllers.receiver;
 
 import com.github.juandavidgc.scalableweb.entities.usecases.receiver.Receiver;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -29,6 +30,11 @@ public class ReceiverControllerV1Tests {
         public ReceiverControllerV1 getReceiverControllerV1() {
             return new ReceiverControllerV1();
         }
+
+    }
+
+    @Test
+    public void ok(){
 
     }
 
