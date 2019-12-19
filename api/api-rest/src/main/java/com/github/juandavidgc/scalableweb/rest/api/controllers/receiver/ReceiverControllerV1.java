@@ -4,6 +4,9 @@ import com.github.juandavidgc.scalableweb.entities.exceptions.NoJsonException;
 import com.github.juandavidgc.scalableweb.entities.exceptions.NoValidBase64EncodingException;
 import com.github.juandavidgc.scalableweb.rest.api.messages.PartRequestMessageV1;
 import com.github.juandavidgc.scalableweb.entities.usecases.receiver.Receiver;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -29,6 +32,11 @@ public class ReceiverControllerV1 {
     @Autowired
     private Receiver receiver;
 
+    @ApiOperation(value = "Stores the left string", produces = "application/json")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Ok"),
+            @ApiResponse(code = 406, message = "Empty String, Invalid JSON or Bad encoding")
+    })
     @RequestMapping(value = "/{ID}/left", method = PUT)
     public ResponseEntity receiveLeft(@RequestBody @Valid PartRequestMessageV1 partRequest,
                                       @PathVariable("ID") String id){
@@ -41,6 +49,11 @@ public class ReceiverControllerV1 {
         return responseEntity;
     }
 
+    @ApiOperation(value = "Stores the right string", produces = "application/json")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Ok"),
+            @ApiResponse(code = 406, message = "Empty String, Invalid JSON or Bad encoding")
+    })
     @RequestMapping(value = "/{ID}/right", method = PUT)
     public ResponseEntity receiveRight(@RequestBody @Valid PartRequestMessageV1 partRequest,
                                        @PathVariable("ID") String id){
