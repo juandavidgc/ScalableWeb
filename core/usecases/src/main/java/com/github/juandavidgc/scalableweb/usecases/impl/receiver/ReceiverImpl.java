@@ -6,6 +6,8 @@ import com.github.juandavidgc.scalableweb.entities.exceptions.NoValidBase64Encod
 import com.github.juandavidgc.scalableweb.entities.usecases.receiver.Receiver;
 import com.github.juandavidgc.scalableweb.entities.state.StoreManager;
 import org.apache.tomcat.util.codec.binary.Base64;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -16,6 +18,8 @@ import java.io.IOException;
  */
 @Component
 public class ReceiverImpl implements Receiver {
+
+    Logger logger = LoggerFactory.getLogger(ReceiverImpl.class);
 
     @Autowired
     private StoreManager storeManager;
@@ -29,6 +33,7 @@ public class ReceiverImpl implements Receiver {
         if(noJson(json)){
             throw new NoJsonException();
         }
+        logger.debug("Storing left string. Id: " + id + ", json: " + json);
         storeManager.storeLeftPart(id, json);
     }
 
@@ -45,6 +50,7 @@ public class ReceiverImpl implements Receiver {
         if(noJson(json)){
             throw new NoJsonException();
         }
+        logger.debug("Storing left string. Id: " + id + ", json: " + json);
         storeManager.storeRightPart(id, json);
     }
 

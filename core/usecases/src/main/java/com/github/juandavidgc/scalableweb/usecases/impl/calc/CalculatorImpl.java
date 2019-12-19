@@ -7,6 +7,8 @@ import com.github.juandavidgc.scalableweb.entities.domain.CalculatorResponseStat
 import com.github.juandavidgc.scalableweb.entities.exceptions.NotEnoughPartsException;
 import com.github.juandavidgc.scalableweb.entities.state.StoreManager;
 import com.github.juandavidgc.scalableweb.entities.usecases.calc.Calculator;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -19,11 +21,14 @@ import java.util.List;
 @Component
 public class CalculatorImpl implements Calculator {
 
+    Logger logger = LoggerFactory.getLogger(CalculatorImpl.class);
+
     @Autowired
     private StoreManager storeManager;
 
     @Override
     public CalculatorResponse calculate(String id) throws NotEnoughPartsException {
+        logger.trace("calculate: ID: " + id);
         if(isEmpty(id)){
             throw new IllegalArgumentException();
         }
